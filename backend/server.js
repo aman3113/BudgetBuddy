@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 
 const authRouter = require("./routes/authRoutes");
+const userRouter = require("./routes/userRoutes");
 const incomeRouter = require("./routes/incomeRoutes");
 const expenseRouter = require("./routes/expenseRoutes");
 const savingsRouter = require("./routes/savingsRoutes");
@@ -23,6 +24,7 @@ app.use("/v1/auth", authRouter);
 app.use("/v1/income", requiresAuth, incomeRouter);
 app.use("/v1/expense", requiresAuth, expenseRouter);
 app.use("/v1/savings", requiresAuth, savingsRouter);
+app.use("/v1/user", requiresAuth, userRouter);
 
 app.get("/", (req, res) => {
 	res.send("Hello this is a Budget Buddy API by Aman.");
